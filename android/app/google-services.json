@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "539631545871",
+    "project_id": "trizard-9fbfe",
+    "storage_bucket": "trizard-9fbfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539631545871:android:41f2281737e988f1953d7a",
+        "android_client_info": {
+          "package_name": "com.example.trizard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539631545871-6okiuijcr8gko2cms9goagtb8b79a7ak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN9XTCVvYUDTEg1_HCYoB1MzJ-TAO_W4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539631545871-6okiuijcr8gko2cms9goagtb8b79a7ak.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
