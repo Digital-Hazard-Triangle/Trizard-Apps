@@ -72,7 +72,7 @@ class _BarAppState extends State<BarApp> {
               Navigator.pushNamed(context, '/settings');
             },
             icon: const Icon(
-              Icons.settings,
+              Icons.menu_rounded,
               color: Color.fromARGB(255, 255, 255, 255),
               size: 25,
             ),

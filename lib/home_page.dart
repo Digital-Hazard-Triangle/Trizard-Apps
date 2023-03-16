@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:trizard/cards/account_cards.dart';
 import 'package:trizard/cards/car_condition_message.dart';
 import 'package:trizard/cards/device_status.dart';
+import 'package:trizard/emergency_menu/call_center.dart';
+import 'package:trizard/emergency_menu/sos_call.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -49,13 +51,21 @@ class _DashboardState extends State<Dashboard> {
             ),
           ),
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CallCenter(),
+            Sos_Call(),
+          ],
+        ),
         Container(
           padding: EdgeInsets.all(10),
           margin: EdgeInsets.all(10),
           width: MediaQuery.of(context).size.width,
           height: 400,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 255, 255),
+            image: DecorationImage(
+                image: AssetImage("assets/Mapp.png"), fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(30),
             boxShadow: const [
               BoxShadow(
@@ -67,7 +77,7 @@ class _DashboardState extends State<Dashboard> {
               ),
             ],
           ),
-          child: Text("bagian atas"),
+          child: Text("bagian Map"),
         )
       ],
     );
