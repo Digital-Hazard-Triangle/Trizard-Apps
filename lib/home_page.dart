@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:trizard/cards/account_cards.dart';
+import 'package:trizard/cards/car_condition_message.dart';
+import 'package:trizard/cards/device_status.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -18,59 +21,55 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.all(10),
-              width: MediaQuery.of(context).size.width,
-              height: 400,
-              decoration: BoxDecoration(
-                color: Colors.yellow,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Color.fromARGB(41, 0, 0, 0),
-                    blurStyle: BlurStyle.normal,
-                    spreadRadius: 0.0001,
-                    blurRadius: 5,
-                    offset: Offset(5, 5), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: Text("bagian atas"),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+          padding: EdgeInsets.all(10),
+          width: MediaQuery.of(context).size.width,
+          height: 500,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/main_bg.png"), fit: BoxFit.cover),
+          ),
+          child: Container(
+            padding: EdgeInsets.fromLTRB(10, 20, 10, 10),
+            margin: EdgeInsets.all(10),
+            child: Column(
+              children: [
+                BarApp(),
+                Container(
+                  width: 1000,
+                  margin: EdgeInsets.only(top: 50),
+                  alignment: Alignment.center,
+                  child: DeviceStatus(),
+                ),
+                CarStatus(),
+              ],
             ),
-            Container(
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.all(10),
-              width: MediaQuery.of(context).size.width,
-              height: 400,
-              decoration: BoxDecoration(
-                color: Colors.yellow,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Color.fromARGB(41, 0, 0, 0),
-                    blurStyle: BlurStyle.normal,
-                    spreadRadius: 0.0001,
-                    blurRadius: 5,
-                    offset: Offset(5, 5), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: Text("bagian atas"),
-            )
-          ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        Container(
+          padding: EdgeInsets.all(10),
+          margin: EdgeInsets.all(10),
+          width: MediaQuery.of(context).size.width,
+          height: 400,
+          decoration: BoxDecoration(
+            color: Color.fromARGB(255, 255, 255, 255),
+            borderRadius: BorderRadius.circular(30),
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromARGB(41, 0, 0, 0),
+                blurStyle: BlurStyle.normal,
+                spreadRadius: 0.0001,
+                blurRadius: 5,
+                offset: Offset(5, 5), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Text("bagian atas"),
+        )
+      ],
     );
   }
 }
