@@ -19,7 +19,7 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Future init() async {
-    preferences = await SharedPreferences?.getInstance();
+    preferences = await SharedPreferences.getInstance();
     setState(() {});
   }
 

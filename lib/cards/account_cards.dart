@@ -4,7 +4,6 @@ import 'package:trizard/theme.dart';
 
 class BarApp extends StatefulWidget {
   BarApp({Key? key}) : super(key: key);
-
   @override
   State<BarApp> createState() => _BarAppState();
 }
@@ -19,7 +18,7 @@ class _BarAppState extends State<BarApp> {
   }
 
   Future init() async {
-    preferences = await SharedPreferences?.getInstance();
+    preferences = await SharedPreferences.getInstance();
   }
 
   @override
@@ -32,7 +31,7 @@ class _BarAppState extends State<BarApp> {
         children: [
           InkWell(
             child: SizedBox(
-              width: 260,
+              width: 250,
               child: Row(
                 children: [
                   const CircleAvatar(
@@ -45,16 +44,16 @@ class _BarAppState extends State<BarApp> {
                       Container(
                         alignment: Alignment.centerLeft,
                         margin: const EdgeInsets.only(left: 10),
-                        width: 150,
+                        width: 140,
                         child: Text("Selamat datang!",
                             style: whiteStyle.copyWith(fontSize: 12)),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
                         margin: const EdgeInsets.only(left: 10),
-                        width: 150,
+                        width: 140,
                         child: Text(
-                          "${preferences?.getString('nama')}",
+                          '${preferences?.getString('nama')}',
                           style: whiteStyle.copyWith(fontSize: 22),
                         ),
                       ),
@@ -72,9 +71,9 @@ class _BarAppState extends State<BarApp> {
               Navigator.pushNamed(context, '/settings');
             },
             icon: const Icon(
-              Icons.menu_rounded,
+              Icons.bluetooth,
               color: Color.fromARGB(255, 255, 255, 255),
-              size: 25,
+              size: 35,
             ),
           ),
         ],

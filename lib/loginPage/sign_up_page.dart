@@ -64,12 +64,12 @@ class _SignUpPageState extends State<SignUpPage> {
                   margin: const EdgeInsets.only(bottom: 15),
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/logo_app.png'),
+                      image: AssetImage("assets/triangle.png"),
                     ),
                   ),
                 ),
                 Text(
-                  'Milesight',
+                  'Trizard',
                   style: GoogleFonts.aBeeZee(
                     fontSize: 40,
                     color: Colors.white,

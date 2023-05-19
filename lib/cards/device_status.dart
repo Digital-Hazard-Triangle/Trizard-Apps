@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trizard/history_page/history_view.dart';
 import 'package:trizard/theme.dart';
 
 class DeviceStatus extends StatefulWidget {
-  DeviceStatus({Key? key}) : super(key: key);
-
+  DeviceStatus(
+      {Key? key,
+      required this.lat,
+      required this.long,
+      required this.on_off,
+      required this.kondisii})
+      : super(key: key);
+  bool? on_off;
+  String? lat;
+  String? long;
+  String? kondisii;
   @override
   State<DeviceStatus> createState() => _DeviceStatusState();
 }
@@ -19,12 +29,13 @@ class _DeviceStatusState extends State<DeviceStatus> {
   }
 
   Future init() async {
-    preferences = await SharedPreferences?.getInstance();
+    preferences = await SharedPreferences.getInstance();
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.fromLTRB(10, 10, 10, 60),
       child: Column(
         children: [
           Container(
@@ -52,50 +63,76 @@ class _DeviceStatusState extends State<DeviceStatus> {
                   Row(
                     children: [
                       Container(
-                        height: 70,
                         margin: EdgeInsets.all(10),
                         alignment: Alignment.centerLeft,
-                        child: Icon(
-                          Icons.notifications_active,
-                          color: Color.fromARGB(255, 13, 255, 162),
-                        ),
+                        child: widget.on_off == true
+                            ? Icon(
+                                Icons.notifications_active,
+                                color: Color.fromARGB(255, 13, 255, 162),
+                              )
+                            : Icon(
+                                Icons.notifications_active,
+                                color: Color.fromARGB(255, 128, 129, 129),
+                              ),
                       ),
                       Container(
-                        width: 100,
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "On",
-                          style: whiteStyle,
-                        ),
-                      ),
+                          width: 100,
+                          alignment: Alignment.centerLeft,
+                          child: widget.on_off == true
+                              ? Text(
+                                  "On",
+                                  style: whiteStyle,
+                                )
+                              : Text(
+                                  "off",
+                                  style: whiteStyle,
+                                )),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 70,
-                        margin: EdgeInsets.all(10),
-                        alignment: Alignment.topLeft,
-                        child: Icon(
-                          Icons.gps_fixed_rounded,
-                          color: Color.fromARGB(255, 13, 255, 162),
+                  InkWell(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.all(10),
+                          alignment: Alignment.topLeft,
+                          child: widget.on_off == true
+                              ? Icon(
+                                  Icons.gps_fixed_rounded,
+                                  color: Color.fromARGB(255, 13, 255, 162),
+                                )
+                              : Icon(
+                                  Icons.gps_fixed_rounded,
+                                  color: Color.fromARGB(255, 108, 109, 109),
+                                ),
                         ),
-                      ),
-                      Container(
-                        width: 100,
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Jl. awoijgijawjoojawfpj, faowijfiwajfa, afwoijiwj",
-                          style: whiteStyle,
+                        Container(
+                          width: 100,
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "${widget.lat}, ${widget.long}",
+                            style: whiteStyle,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MapSample(
+                            latitude: double.parse('${widget.lat}'),
+                            longitude: double.parse('${widget.long}'),
+                            kondisi: '${widget.kondisii}',
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               )
             ],
-          )
+          ),
         ],
       ),
     );
